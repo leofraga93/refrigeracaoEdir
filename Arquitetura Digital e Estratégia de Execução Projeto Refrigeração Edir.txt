@@ -1,0 +1,154 @@
+# 📄 Documento de Arquitetura e Execução: Projeto Refrigeração Edir
+
+## 1. Escopo e Objetivos de Negócio
+
+O site tem como objetivo atuar em duas frentes simultâneas de público-alvo:
+
+* 
+**B2B (Empresas e Governo):** Passar credibilidade técnica e profissionalismo para auxiliar na participação de licitações. O destaque principal para esse público será o serviço de PMOC (Plano de Manutenção, Operação e Controle).
+
+
+* 
+**B2C (Cliente Final/Residencial):** Oferecer uma barreira de entrada simplificada para solicitações de orçamento de instalação e elétrica.
+
+
+
+## 2. Stack Tecnológica Definida
+
+A base tecnológica foi pensada para ser moderna, escalável e de custo imediato zero para o cliente.
+
+| Camada | Tecnologia Escolhida | Justificativa / Aplicação |
+| --- | --- | --- |
+| **Front-end** | JavaScript / React 
+
+ | Criação de componentes dinâmicos e gerenciamento de estado do formulário.
+
+ |
+| **Estilização** | Tailwind CSS 
+
+ | Desenvolvimento ágil de interfaces responsivas e limpas.
+
+ |
+| **Hospedagem Front** | Vercel ou Netlify 
+
+ | Deploy contínuo, performance e SSL gratuito. |
+| **Back-end / BD** | Java Spring Boot / PostgreSQL 
+
+ | *Fase 2 (Opcional):* Apenas caso o cliente deseje escalar no futuro para um painel administrativo próprio. Por enquanto, a lógica roda 100% no Front-end.
+
+ |
+
+---
+
+## 3. Estrutura de Componentes e Interface (UI)
+
+Para manter a produtividade enquanto aguardamos o material real do cliente, os dados serão inicializados de forma fictícia (Mock Data) utilizando imagens do Unsplash.
+
+* 
+**`ServiceCard`:** Componente dinâmico que receberá as `props` dos serviços (Instalação e Manutenção de ar-condicionado, Serviços Elétricos, PMOC).
+
+
+* 
+**`TestimonialCard`:** Componente para exibição de provas sociais e depoimentos de clientes satisfeitos.
+
+
+* 
+**`MultiStepForm` (O Wizard):** O motor de conversão do site, focado na captação estruturada de leads.
+
+
+
+---
+
+## 4. Arquitetura do Motor de Orçamentos (Wizard)
+
+Para garantir uma excelente Experiência do Usuário (UX), o formulário seguirá o modelo *Wizard* (passo a passo), substituindo campos de digitação abertos por botões grandes e selecionáveis.
+
+### A. Gerenciamento de Estado e Renderização
+
+* 
+**State:** Todo o estado (`state`) das respostas será concentrado no componente Pai (`MultiStepForm`), evitando a complexidade de *prop drilling*.
+
+
+* 
+**Renderização Condicional:** Utilizaremos a abordagem de `Switch/Case` fora do `return()` para manter o código limpo, avaliando o estado `currentStep` para exibir apenas a etapa atual.
+
+
+
+### B. Mapeamento das Etapas do Formulário
+
+O questionário foi otimizado para extrair as variáveis de negócio necessárias sem cansar o cliente.
+
+**Passo 1: Dimensionamento do Equipamento** Para facilitar a usabilidade, as opções unificam metros quadrados (m²) e BTUs, utilizando a regra de 600 a 800 BTUs por m².
+
+* 🔘 Ambiente Pequeno (Até 12m² / ~9.000 BTUs) 
+
+
+* 🔘 Ambiente Médio (De 15m² a 20m² / ~12.000 BTUs) 
+
+
+* 🔘 Ambiente Grande (Acima de 25m² / 18.000+ BTUs) 
+
+
+* 🔘 Já possuo o equipamento / Sei os BTUs 
+
+
+
+**Passo 2: Avaliação de Infraestrutura** 
+
+* 
+*Ponto Elétrico:* Sim / Não / Não sei.
+
+
+* 
+*Alvenaria (Quebrar parede/furar):* Sim / Não / Não sei.
+
+
+* 
+*Tipo de Imóvel:* Casa térrea / Apartamento / Ponto Comercial.
+
+
+
+**Passo 3: Localização** 
+
+* 🔘 Salvador 
+
+
+* 🔘 Feira de Santana 
+
+
+* 🔘 Outras localidades 
+
+
+
+---
+
+## 5. Lógica de Integração com o WhatsApp
+
+A conversão final utiliza a funcionalidade *Click to Chat* da API do WhatsApp (`wa.me`), o que não gera custos.
+
+1. 
+**Concatenação:** Ao finalizar o Passo 3, o React coleta as variáveis do componente Pai e formata uma string estruturada.
+
+
+2. 
+**Codificação:** A string passa pela função nativa `encodeURIComponent()` para garantir a leitura correta de espaços e acentos na URL.
+
+
+3. 
+**Disparo:** O cliente é redirecionado para `https://wa.me/5571993650280?text=...`.
+
+
+
+> **Exemplo do Payload Gerado:**
+> "Olá, Edir! Vim pelo site e gostaria de um orçamento inicial.
+> Equipamento: Ambiente Médio (~12.000 BTUs)
+> Elétrica Pronta: Não sei
+> Furos/Alvenaria: Sim
+> Imóvel: Apartamento
+> Região: Salvador"
+
+---
+
+### Diretrizes Finais para o Desenvolvimento
+
+Ao alimentar o seu ambiente de desenvolvimento (Cursor) com este documento, solicite primeiro a criação do **Layout Base (Tailwind/React)** com os dados fictícios e, na sequência, foque na construção isolada do **`MultiStepForm`**. Assim, você garante que a vitrine visual e o motor principal do negócio sejam entregues com máxima qualidade técnica.
