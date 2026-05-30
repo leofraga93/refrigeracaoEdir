@@ -19,7 +19,7 @@ export default function ServiceCard({ title, subtitle, description, image, highl
           alt={title}
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+        <div className="absolute right-0 bottom-0 h-full w-full bg-gradient-to-t from-slate-900/60 to-transparent" />
         <span className="absolute bottom-3 left-4 rounded-md bg-white/90 px-2 py-0.5 text-xs font-semibold text-slate-700">
           {audience === 'B2B' ? 'Empresas & Governo' : 'Residencial & Comercial'}
         </span>

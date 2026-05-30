@@ -1,9 +1,16 @@
-export const WHATSAPP_NUMBER = '5571993650280'
+export const WHATSAPP_NUMBER = '557199153220'
+
+/** Altere para `true` quando quiser exibir o crédito do desenvolvedor no rodapé. */
+export const SHOW_DEVELOPER_CREDIT = false
+
+export const developerCredit = {
+  linkedin: 'https://www.linkedin.com/in/leofraga93/',
+}
 
 export const companyInfo = {
   name: 'Refrigeração Edir',
   tagline: 'Climatização, elétrica e PMOC com excelência técnica',
-  phone: '(71) 99365-0280',
+  phone: '(71) 9915-3220',
   email: 'contato@refrigeracaoedir.com.br',
   regions: ['Salvador', 'Feira de Santana', 'Região Metropolitana'],
 }
@@ -15,8 +22,7 @@ export const services = [
     subtitle: 'Ar-condicionado residencial e comercial',
     description:
       'Instalação profissional, limpeza, recarga de gás e manutenção preventiva para garantir conforto e economia de energia.',
-    image:
-      'https://images.unsplash.com/photo-1631545806609-59e577c64561?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1718203862467-c33159fdc504?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     highlight: false,
     audience: 'B2C',
   },
