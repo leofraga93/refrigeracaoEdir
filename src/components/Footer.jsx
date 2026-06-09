@@ -50,7 +50,7 @@ export default function Footer() {
       </footer>
 
       <div
-        className={`border-t border-slate-200 bg-white py-3 text-center text-xs text-slate-600 ${
+        className={`border-t border-slate-200 bg-white py-1 text-center text-xs leading-none text-slate-600 ${
           SHOW_DEVELOPER_CREDIT ? '' : 'hidden'
         }`}
       >

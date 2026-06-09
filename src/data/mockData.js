@@ -1,7 +1,7 @@
-export const WHATSAPP_NUMBER = '557199153220'
+export const WHATSAPP_NUMBER = '5571992389589'//'557199153220'
 
 /** Altere para `true` quando quiser exibir o crédito do desenvolvedor no rodapé. */
-export const SHOW_DEVELOPER_CREDIT = false
+export const SHOW_DEVELOPER_CREDIT = true
 
 export const developerCredit = {
   linkedin: 'https://www.linkedin.com/in/leofraga93/',
